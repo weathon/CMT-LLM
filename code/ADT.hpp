@@ -1,14 +1,15 @@
 #include <iostream>
 #include <vector>
+#include <math.h>
 #include <algorithm>
 typedef std::vector<float> floatArray;
 typedef std::vector<int> intArray;
-#include "distance.hpp"
+
 
 
 struct dataPoint
 {
-    intArray data;
+    floatArray data;
     int id;
     floatArray ancestorsDistancesList;
     float distanceFromDad;
@@ -28,39 +29,27 @@ struct BallTreeNode
     int count = 0;
 };
 
-intArray randomArray(int size)
+floatArray randomArray(int size)
 {
-    // by copolit
-    intArray list;
-    int tmp, rnd, rnd2;
-    for (int i = 0; i < size; i++)
+    floatArray list;
+    list.reserve(size)
+    for(int i=0; i<size; i++)
     {
-        list.push_back(i);
+        list.push_back(rand()/RAND_MAX)
     }
-
-    /*for (int i = 0; i < 8; i++) //too slow becasue it did not swap at all
-    {
-        rnd = rand()%size;
-        rnd2 = rand()%size;
-        tmp=list[rnd];
-        list[rnd]=list[rnd2];
-        list[rnd2]=tmp;
-    }*/
-    std::random_shuffle(list.begin(), list.end());
-    // https://stackoverflow.com/questions/14720134/is-it-possible-to-random-shuffle-an-array-of-int-elements
     return list;
 }
 
 float d(dataPoint list1, dataPoint list2, long long & Callcount)
 {
         Callcount++;
-        // int sum=0;
-        // for(int i=0; i<list1.data.size(); i++)
-        // {
-        //     sum+=(list1.data[i]-list2.data[i])*(list1.data[i]-list2.data[i]);
-        // }
-        // return sum/50;
-        return compare(list1.data, list2.data);
+        float sum = 0;
+        for(int i=0; i<LEN; i++)
+        {
+            sum+=pow(list1,data[i]-list1,data[2],2);
+        }
+        sum/=LEN;
+        return sqrt(sum);
 }
 
 void genData(std::vector<dataPoint> &Objects) // no wonder it is 0, this is vector not array

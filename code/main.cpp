@@ -7,8 +7,8 @@
 #include <string>
 #include <vector>
 
-#define LEN 30
-int N = number_of_objects
+#define LEN 1024
+int N = 1e9;//1 billion
 #define print(x) std::cout << x << std::endl;
 #define printa(x)                                                              \
   for (auto thisiscool : x)                                                    \
@@ -309,8 +309,7 @@ int main() {
 
   // printCMTFars(*rootNewBT);
   Callcount = 0;
-  floatArray range({0, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1, 0.11, 0.12, 0.13,
-                    0.14, 0.15, 0.16, 0.17});
+  floatArray range({0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30});
   cout << "Model Name, Language, r, nFound, Call Counts, Time, N, LEN" << endl;
   // for (auto r : range)
   // {
